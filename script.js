@@ -78,7 +78,6 @@ function selectApp(appId) {
     const downloadBtn = document.getElementById('detailDownload');
     if (app.downloadUrl) {
         downloadBtn.href = app.downloadUrl;
-        downloadBtn.setAttribute('download', `${app.name}-macOS.zip`);
         downloadBtn.style.display = "inline-block";
         downloadBtn.innerText = "Download Trial";
     } else {
