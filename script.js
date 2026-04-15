@@ -25,7 +25,7 @@ const APPS = {
             "Sensitivity Calibration",
             "Low Latency Audio Engine"
         ],
-        downloadUrl: "https://github.com/luisdanielsilva/KnockApp/releases/latest/download/KnockApp.zip"
+        downloadUrl: "https://github.com/luisdanielsilva/KnockApp/releases/latest/download/KnockApp-macOS.zip"
     },
     brightness: {
         name: "BrightnessApp",
