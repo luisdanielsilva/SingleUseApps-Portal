@@ -44,12 +44,11 @@ def main():
     # getpass conceals the password while typing
     passwd = getpass.getpass("Coloca a Password do vPanel (não vai aparecer no ecrã): ")
         
-    local_target = "webapp"
+    local_target = "."
     
-    if not os.path.exists(local_target):
-        print(f"Erro: A pasta '{local_target}' não foi encontrada.")
-        sys.exit(1)
-
+    # Files/folders to ignore during upload
+    ignore_list = ['.git', '.gitignore', 'deploy_ftp.py', 'README.md', '.DS_Store']
+    
     print("\nA ligar aos deuses do servidor FTP...")
     try:
         ftp = ftplib.FTP(host)
@@ -57,10 +56,21 @@ def main():
         print("✅ Ligação estabelecida com sucesso!")
         
         ftp.cwd(remote_path)
-        print(f"Iniciando envio dos ficheiros locais de '{local_target}/' para '{remote_path}'...")
+        print(f"Iniciando envio dos ficheiros locais para '{remote_path}'...")
         
-        # Upload contents of webapp folder recursively
-        upload_dir(ftp, local_target, ".")
+        for item in os.listdir(local_target):
+            if item in ignore_list:
+                continue
+            
+            local_path = os.path.join(local_target, item)
+            if os.path.isfile(local_path):
+                print(f"A enviar ficheiro: {item}...")
+                with open(local_path, 'rb') as f:
+                    ftp.storbinary(f'STOR {item}', f)
+            elif os.path.isdir(local_path):
+                print(f"A criar pasta: {item}...")
+                upload_dir(ftp, local_path, item)
+                ftp.cwd("..")
         
         ftp.quit()
         print("\n🎉 Deploy concluído! A tribo está na internet!")

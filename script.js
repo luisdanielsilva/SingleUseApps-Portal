@@ -24,7 +24,8 @@ const APPS = {
             "Custom Sound Library Support",
             "Sensitivity Calibration",
             "Low Latency Audio Engine"
-        ]
+        ],
+        downloadUrl: "https://github.com/luisdanielsilva/KnockApp/releases/latest/download/KnockApp.zip"
     },
     brightness: {
         name: "BrightnessApp",
