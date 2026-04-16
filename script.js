@@ -12,7 +12,7 @@ const APPS = {
             "macOS Trash Integration",
             "Safety Lock: Prevents total deletion"
         ],
-        downloadUrl: "https://github.com/luisdanielsilva/FileLister/releases/latest/download/FileLister_Professional_Bundle_v1.1.zip"
+        downloadUrl: "https://github.com/luisdanielsilva/FileLister/releases/latest/download/filelister.zip"
     },
     knockapp: {
         name: "KnockApp",
@@ -25,7 +25,7 @@ const APPS = {
             "Sensitivity Calibration",
             "Low Latency Audio Engine"
         ],
-        downloadUrl: "https://github.com/luisdanielsilva/KnockApp/releases/latest/download/KnockApp-macOS.zip"
+        downloadUrl: "https://github.com/luisdanielsilva/KnockApp/releases/latest/download/knockapp.zip"
     },
     brightness: {
         name: "BrightnessApp",
