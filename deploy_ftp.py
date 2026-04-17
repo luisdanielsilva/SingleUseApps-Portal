@@ -41,7 +41,8 @@ def main():
     print(f"Utilizador: {user}")
     print(f"Pasta Alvo: /{remote_path}\n")
     
-    passwd = "Ldcs12593337"
+    # getpass conceals the password while typing
+    passwd = getpass.getpass("Coloca a Password do vPanel (não vai aparecer no ecrã): ")
         
     local_target = "."
     
