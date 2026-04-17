@@ -29,15 +29,17 @@ const APPS = {
     },
     brightness: {
         name: "BrightnessApp",
-        tagline: "Control your displays with precision.",
+        tagline: "Instant brightness levels for peak comfort.",
         icon: "☀️",
         salt: "Brightness-Secret-Salt-999-Lux",
         features: [
-            "Native DDC/CI Support",
-            "Keyboard Shortcuts Integration",
-            "Dual-Monitor Synchronization",
-            "Zero Energy Footprint"
-        ]
+            "Quick Select: 25%, 50%, 75%, 100%",
+            "Apple Silicon Optimized (M1/M2/M3)",
+            "Dynamic Menu Bar Sunlight Icon",
+            "Automatic Restore on Exit",
+            "Zero Performance Overhead"
+        ],
+        downloadUrl: "https://github.com/luisdanielsilva/BrightnessApp/releases/latest/download/brightnessapp.zip"
     },
     systempulse: {
         name: "System Pulse",
