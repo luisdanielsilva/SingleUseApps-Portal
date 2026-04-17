@@ -25,7 +25,7 @@ const APPS = {
             "Sensitivity Calibration",
             "Low Latency Audio Engine"
         ],
-        downloadUrl: "https://github.com/luisdanielsilva/KnockApp/releases/latest/download/knockapp.zip"
+        downloadUrl: "https://github.com/luisdanielsilva/KnockApp/releases/latest/download/KnockApp.zip"
     },
     brightness: {
         name: "BrightnessApp",
@@ -39,7 +39,7 @@ const APPS = {
             "Automatic Restore on Exit",
             "Zero Performance Overhead"
         ],
-        downloadUrl: "https://github.com/luisdanielsilva/BrightnessApp/releases/latest/download/brightnessapp.zip"
+        downloadUrl: "https://github.com/luisdanielsilva/BrightnessApp/releases/latest/download/BrightnessApp.zip"
     },
     systempulse: {
         name: "System Pulse",
