@@ -190,7 +190,7 @@ document.getElementById('mailBtn').addEventListener('click', () => {
     const appName = APPS[document.getElementById('appSelect').value].name;
 
     const subject = encodeURIComponent(`Your ${appName} Lifetime License`);
-    const body = encodeURIComponent(`Hello ${name},\n\nThank you for supporting our development!\n\nYour Pro License Key for ${appName} is: ${key}\n\nTo activate, open the app and go to the license menu.\n\nEnjoy your premium software!\n- LS Developer Suite Team`);
+    const body = encodeURIComponent(`Hello ${name},\n\nThank you for supporting our development!\n\nYour Pro License Key for ${appName} is: ${key}\n\nTo activate, open the app and go to the license menu.\n\nEnjoy your premium software!\n- Single Use Apps Team`);
     
     window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
 });
