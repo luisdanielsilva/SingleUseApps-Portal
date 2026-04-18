@@ -41,6 +41,18 @@ const APPS = {
         ],
         downloadUrl: "https://github.com/luisdanielsilva/BrightnessApp/releases/latest/download/BrightnessApp.zip"
     },
+    visualexif: {
+        name: "VisualExif",
+        tagline: "Professional Metadata Surgery",
+        description: "A high-performance utility for bulk metadata management. Powered by the industry-standard ExifTool, it allows for recursive folder scanning and selective neutralization of sensitive data categories.",
+        features: [
+            "Recursive Folder Processing",
+            "Selective Tag Removal (GPS, EXIF, XMP)",
+            "Native Perl Engine Included",
+            "Privacy-First Architecture"
+        ],
+        downloadUrl: "https://github.com/luisdanielsilva/VisualExif/releases/latest/download/VisualExif.zip"
+    },
     systempulse: {
         name: "System Pulse",
         tagline: "Real-time health monitor and optimizer.",
