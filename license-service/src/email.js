@@ -24,8 +24,9 @@ ${description}`;
   });
 }
 
-export async function sendLicenseEmail({ name, email, appName, key }) {
+export async function sendLicenseEmail({ name, email, appName, key, supportEmail }) {
   const from = process.env.RESEND_FROM || "Single Use Apps <support@singleuseapps.com>";
+  const contactEmail = supportEmail || "support@singleuseapps.com";
   const text = `Hello ${name},
 
 Thank you for your purchase!
@@ -36,6 +37,8 @@ To activate:
 1. Open the app.
 2. Go to the menu > License Key...
 3. Enter your email and this key.
+
+Questions? Contact us at ${contactEmail}
 
 Enjoy!
 - The Single Use Apps Team`;

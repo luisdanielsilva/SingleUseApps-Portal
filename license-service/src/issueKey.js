@@ -16,7 +16,7 @@ export async function issueKey({ paymentRef, provider, appId, name, email, sourc
   // Only send the email the first time this payment is processed — a
   // retried webhook must not re-notify the customer.
   if (isNew) {
-    await sendLicenseEmail({ name, email, appName: app.name, key: license.key });
+    await sendLicenseEmail({ name, email, appName: app.name, key: license.key, supportEmail: app.supportEmail });
   }
 
   return license;
