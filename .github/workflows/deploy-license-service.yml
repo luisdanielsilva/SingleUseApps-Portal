@@ -1,0 +1,59 @@
+name: Deploy License Service to VPS
+
+# Scoped deploy for license-service ONLY — rsyncs license-service/ (this repo's
+# subfolder) to /var/www/license-service/ (its own top-level directory on the
+# VPS, separate from /var/www/singleuseapps-portal/). Do not widen this to the
+# repo root or the portal's directory: see deploy.yml in this same folder for
+# why that was permanently disabled (it used to wipe the live personal site
+# and unmanaged paths like /vibecoding/).
+#
+# data/ (the license SQLite DB) and .env (Stripe/Resend keys, per-app salts)
+# exist only on the server, never in git — both are excluded from rsync so
+# --delete can never touch them.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'license-service/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Connect to Tailscale
+        uses: tailscale/github-action@v2
+        with:
+          authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
+
+      - name: Install sshpass
+        run: sudo apt-get install -y sshpass
+
+      - name: Add VPS to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy via Rsync
+        run: |
+          sshpass -p "${{ secrets.VPS_PASSWORD }}" rsync -avz --delete \
+            -e "ssh -o StrictHostKeyChecking=no" \
+            --exclude 'node_modules' --exclude 'data' --exclude '.env' \
+            ./license-service/ deploy@${{ secrets.VPS_HOST }}:/var/www/license-service/
+
+      - name: Install dependencies and restart
+        run: |
+          sshpass -p "${{ secrets.VPS_PASSWORD }}" ssh -o StrictHostKeyChecking=no deploy@${{ secrets.VPS_HOST }} '
+            cd /var/www/license-service &&
+            npm install --omit=dev &&
+            pm2 restart license-service
+          '
+
+      - name: Verify health endpoint
+        run: |
+          sleep 3
+          curl -sf https://singleuseapps.com/api/health | grep -q '"ok":true'
