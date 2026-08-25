@@ -1,3 +1,3 @@
 # Deploy Test
 Created to test the automated GitHub Actions deployment to the VPS via Tailscale + rsync.
-Timestamp: 2026-08-25 (retry)
+Timestamp: 2026-08-25 (retry 2, fresh Tailscale key)
